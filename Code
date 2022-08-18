@@ -1,20 +1,25 @@
 import random
 
 def play():
-    user = input("What's your choice? 'r' for rock, 'p' for paper, 's' for scissors\n") # line break
+    user = input("What's your choice? 'r' for rock, 'p' for paper, 's' for scissors: ").lower()
     computer = random.choice(['r','p','s'])
 
     if user == computer:
-        return "It's a tie"
+        print("It's a tie") 
 
     if is_win(user,computer):
         print('You win!')
 
-    if is_win(computer,user): # switch
+    if is_win(computer,user): 
         print("You lose!")
 
 def is_win(player,opponent):
     if (player == 'r' and opponent == 's') or (player == 's' and opponent == 'p') or (player == 'p' and opponent == 'r'):
         return True
 
+def start():
+    while input("Do you want to continue playing?(y/n) ").upper() == "Y":
+        play()
+
 play()
+start()
